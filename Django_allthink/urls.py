@@ -19,12 +19,12 @@ urlpatterns = patterns('',
 
     # Session management
     (r'^login/$', 'django.contrib.auth.views.login'),
-    (r'^logout/$', logout_page),
+    (r'^logout/$', logout),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
          { 'document_root': site_media }),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
          {'document_root': media}),
-    (r'^register/$', register_page),
-    (r'^register/success/$', direct_to_template,
-         { 'template': 'registration/register_success.html' }),
+    (r'^signup/$', register_page),
+    (r'^signup/teacher/$', teacher_register_page),
+    (r'^signup/student/$', student_register_page),
 )
