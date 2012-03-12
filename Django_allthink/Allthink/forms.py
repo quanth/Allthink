@@ -2,10 +2,16 @@ import re
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from django.forms import models
 from django.forms.fields import ChoiceField
-from django.forms.widgets import RadioSelect
+from django.forms.widgets import *
 
 TYPE_USER = ( ('teacher' , 'Teacher'), ('student','Student'))
+
+
+class LoginForm(forms.Form) :
+    username = forms.CharField(label="Username", max_length=30)
+    password = forms.CharField(label="Password", widget=forms.PasswordInput)
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(label='Username', max_length=30)
@@ -39,3 +45,20 @@ class RegistrationForm(forms.Form):
                 return password2
         raise forms.ValidationError('Passwords do not match.')
 
+class CreateLesson(forms.Form) :
+    #
+    lessonTile = forms.CharField(label="Lesson title", max_length=100)
+    GRADE_LEVEL = (
+        ('all','All grade level') ,
+        ('e' , 'Elementary') ,
+        ('h' , 'High school') ,
+        ('c' , 'College')
+    )
+    gradeLevel = forms.ChoiceField(label="Grade level", widget= Select, choices= GRADE_LEVEL)
+    SUBJECT = (
+        ('math', 'Math'),
+        ('science', 'Science'),
+        ('physic', 'Physic')
+    )
+    subject = forms.ChoiceField(label="Subject", widget= Select  , choices = SUBJECT)
+    description = forms.CharField(max_length=1000)
