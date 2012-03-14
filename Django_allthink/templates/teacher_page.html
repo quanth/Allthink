@@ -57,25 +57,24 @@
                     </div>
                 </div>
 
-
                 <div class="options">
                     <a href="/user/{{ username }}/lesson/create"
                        target="_blank"><img src="/media/images/add.png" class="upic">Create New Lesson</a>
                 </div>
 
-
                 <div class="table bb">
-                    {% if lessions %}
-                        {% for lesson in bookmarks %}
+                    {% if lessons %}
+                        {% for lesson in lessons %}
                             <div class="row">
-                                <a href="/user/{{ username }}/lesson/{{ lesson }}"
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}"
                                    target="_top"><img src="/media/images/page-web.png" class="postpic"></a>
-                                <a href="/user/{{ username }}/lesson/{{ lesson }}"
-                                   class="title" target="top">{{ lesson.title }}</a>
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}"
+                                   class="title" target="top">{{ lesson.lessonTitle }}</a>
 
                                 <div class="byline">
-                                    <a href="/user/{{ username }}/lesson/{{ lesson }}/edit"
-                                       target="top">Edit Lesson</a>
+                                    <a href="/user/{{ username }}/lesson/{{ lesson.id }}/edit">Edit Lesson</a>
+                                    -
+                                    <a href="/user/{{ username }}/lesson/{{ lesson.id }}/delete">Delete</a>
                                 </div>
                             </div>
                         {% endfor %}

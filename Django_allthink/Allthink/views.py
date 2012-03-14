@@ -13,10 +13,10 @@ def user_page(request, username):
     user = get_object_or_404(User, username = username)
     user_profile = user.get_profile()
     if user_profile.typeUser == 'teacher' :
-        lessions = user_profile.lesson_set.all()
+        lessons = user_profile.lesson_set.all()
         variables = RequestContext(request, {
             'username': username,
-                'lessions': lessions,
+            'lessons': lessons,
         })
         return  render_to_response('teacher_page.html', variables)
     else :
@@ -89,12 +89,143 @@ def create_lesson(request, username) :
         form = CreateLesson(request.POST)
         if form.is_valid() :
             lesson = Lesson.objects.create(
+                user = user_profile,
                 lessonTitle = form.cleaned_data['lessonTitle'],
                 gradeLevel = form.cleaned_data['gradeLevel'],
                 subject = form.cleaned_data['subject'],
+                description = form.cleaned_data['description'],
             )
-            return render_to_response('lesson/create_lesson.html', RequestContext(request))
+            variables = RequestContext ( request,{
+                'username' : username,
+                'lesson'   : lesson
+            })
+            return render_to_response('lesson/lesson_edit.html', variables)
     else :
         form = CreateLesson()
-    variables = RequestContext(request, {'form' : form})
+    variables = RequestContext(request,{
+        'form' : form,
+        'username' : username,
+    })
     return render_to_response('lesson/create_lesson.html',variables)
+
+def edit_lesson(request, username, id) :
+    lesson = get_object_or_404(Lesson, id = id)
+    videos = lesson.video_set.all()
+    docs = lesson.document_set.all()
+    images = lesson.image_set.all()
+    steps = lesson.stepbystep_set.all()
+    texts = lesson.text_set.all()
+    variables = RequestContext ( request,{
+        'username' : username,
+        'lesson'   : lesson,
+        'videos' : videos,
+        'docs' : docs,
+        'images' : images,
+        'steps' : steps,
+        'texts' : texts,
+    })
+    return render_to_response('lesson/lesson_edit.html',variables)
+
+def delete_lesson(request, username, id) :
+    lesson = get_object_or_404(Lesson, id = id)
+    lesson.delete()
+    return HttpResponseRedirect('/user/' + username)
+
+def edit_lesson_info(request) :
+    return render_to_response('lesson/lesson_edit_info.html')
+
+def add_video(request, username, id) :
+    lesson = get_object_or_404(Lesson, id = id)
+    if request.method == 'POST' :
+        form = AddVideoForm(request.POST)
+        if form.is_valid() :
+            AddVideoForm.objects.create(
+                lesson = lesson,
+                pageTitle = form.cleaned_data['pageTitle'],
+                url = form.cleaned_data['url'],
+                text = form.cleaned_data['text'],
+            )
+            return HttpResponseRedirect('/user/'+username+'/lesson/'+id+'/edit/')
+    else :
+        form = AddVideoForm()
+    variables = RequestContext(request,{
+        'form' : form,
+        'username' : username,
+        })
+    return render_to_response('lesson/add_video_page.html',variables)
+
+def add_doc(request, username, id ) :
+    lesson = get_object_or_404(Lesson, id = id)
+    if request.method == 'POST' :
+        form = AddDocumentForm(request.POST)
+        if form.is_valid() :
+            AddDocumentForm.objects.create(
+                lesson = lesson,
+                pageTitle = form.cleaned_data['pageTitle'],
+                text = form.cleaned_data['text'],
+            )
+            return HttpResponseRedirect('/user/'+username+'/lesson/'+id+'/edit/')
+    else :
+        form = AddDocumentForm()
+    variables = RequestContext(request,{
+        'form' : form,
+        'username' : username,
+        })
+    return render_to_response('lesson/add_ppdoc_page.html',variables)
+
+def add_image(request, username, id) :
+    lesson = get_object_or_404(Lesson, id = id)
+    if request.method == 'POST' :
+        form = AddImageForm(request.POST)
+        if form.is_valid() :
+            AddImageForm.objects.create(
+                lesson = lesson,
+                pageTitle = form.cleaned_data['pageTitle'],
+                text = form.cleaned_data['text'],
+            )
+            return HttpResponseRedirect('/user/'+username+'/lesson/'+id+'/edit/')
+    else :
+        form = AddImageForm()
+    variables = RequestContext(request,{
+        'form' : form,
+        'username' : username,
+        })
+    return render_to_response('lesson/add_image_page.html',variables)
+
+def add_step(request, username, id) :
+    lesson = get_object_or_404(Lesson, id = id)
+    if request.method == 'POST' :
+        form = AddStepbyStepForm(request.POST)
+        if form.is_valid() :
+            AddStepbyStepForm.objects.create(
+                lesson = lesson,
+                pageTitle = form.cleaned_data['pageTitle'],
+                promt = form.cleaned_data['promt'],
+            )
+            return HttpResponseRedirect('/user/'+username+'/lesson/'+id+'/edit/')
+    else :
+        form = AddStepbyStepForm()
+    variables = RequestContext(request,{
+        'form' : form,
+        'username' : username,
+    })
+    return render_to_response('lesson/add_stepbystep_page.html',variables)
+
+def add_text(request, username, id) :
+    lesson = get_object_or_404(Lesson, id = id)
+    if request.method == 'POST' :
+        form = AddTextForm(request.POST)
+        if form.is_valid() :
+            AddTextForm.objects.create(
+                lesson = lesson,
+                pageTitle = form.cleaned_data['pageTitle'],
+                text = form.cleaned_data['text'],
+            )
+            return HttpResponseRedirect('/user/'+username+'/lesson/'+id+'/edit/')
+    else :
+        form = AddTextForm()
+    variables = RequestContext(request,{
+        'form' : form,
+        'username' : username,
+        })
+    return render_to_response('lesson/add_text_page.html',variables)

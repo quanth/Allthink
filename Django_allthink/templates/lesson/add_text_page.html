@@ -1,12 +1,34 @@
 <!DOCTYPE html>
+<!-- saved from url=(0070)http://www.allthink.com/lessons/page-edit-1.php?itemid=300000000245518 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Create lesson</title>
+    <title>Text Page</title>
 
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="/site_media/allthink.css">
+    <link rel="stylesheet" type="text/css" href="./teacher_allthink_lesson_add_text_page_files/allthink.css">
+    <script type="text/javascript" async="" src="./teacher_allthink_lesson_add_text_page_files/ga.js"></script>
+    <script type="text/javascript" src="./teacher_allthink_lesson_add_text_page_files/common.js"></script>
+    <link rel="apple-touch-icon" type="image/png" href="http://www.allthink.com/i/ogicon.png">
+    <link rel="shortcut icon" type="image/png" href="http://www.allthink.com/i/favicon.png">
+    <meta property="og:image" content="http://www.allthink.com/i/ogicon.png">
+    <meta property="fb:page_id" content="194751830558307">
+    <script type="text/javascript">
 
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-3755767-5']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
     <style>.tooltiptrolol {
         position: relative;
         cursor: help;
@@ -66,50 +88,35 @@
         </div>
     </div>
     <div id="main">
+
+
         <div class="mainbox">
+
+
+            <div class="options over">
+                <a href="javascript:history.go(-1)">« Back</a>
+            </div>
+
+
             <form method="post" id="inform">
                 {% csrf_token %}
-                <div class="inform inhelp">
+                <div class="inform simpleform">
                     <div class="toprow">
-                        <div class="title">Create New Lesson</div>
+                        <div class="title">Text Page</div>
                     </div>
 
 
                     <div class="row text ">
-                        <div class="name">Lesson Title</div>
-                        <div class="field">
-                            {{ form.lessonTitle }}
-                        </div>
-                        <div class="help">The name of your lesson: <i>Butterfly Migration</i></div>
-                    </div>
-
-                    <div class="row select ">
-                        <div class="name">Grade Level</div>
-                        <div class="field">
-                            {{ form.gradeLevel }}
-                        </div>
+                        <div class="name">Page Title</div>
+                        <div class="field">{{ form.pageTitle }}</div>
                         <div class="help"></div>
                     </div>
-
-
-                    <div class="row select ">
-                        <div class="name">Subject</div>
-                        <div class="field">
-                            {{ form.subject }}
-                        </div>
-                        <div class="help"></div>
-                    </div>
-
 
                     <div class="row area ">
-                        <div class="name">Descrption</div>
-                        <div class="field">{{ form.description }}</div>
-                        <div class="help"></div>
+                        <div class="name">Text (Optional)</div>
+                        <div class="field">{{ form.text }}</div>
+                        <div class="help">You may add more information or questions below the video.</div>
                     </div>
-
-
-                    <input type="hidden" name="courseid" value="">
-
 
                     <div class="row submit" style="border:0">
                         <div class="name">&nbsp;</div>
@@ -123,11 +130,26 @@
 
         </div>
 
+        <script type="text/javascript">
+            gid('input_title').focus();
+            gid('formsubmit').disabled = false;
+        </script>
     </div>
 </div>
 
+<div id="pop" class="off">
+    <div id="poptop">
+        <a href="javascript:popoff();void(0)" id="popclose" title="Close"><img
+                src="./teacher_allthink_lesson_add_text_page_files/delete.png" alt="Close"></a>
+
+        <div id="poptitle">&nbsp;</div>
+    </div>
+    <div id="popc"></div>
+</div>
 
 <!--
+NULL
+ 
 -->
 
 

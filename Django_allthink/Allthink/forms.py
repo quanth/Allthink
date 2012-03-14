@@ -47,7 +47,7 @@ class RegistrationForm(forms.Form):
 
 class CreateLesson(forms.Form) :
     #
-    lessonTile = forms.CharField(label="Lesson title", max_length=100)
+    lessonTitle = forms.CharField(label="Lesson title", max_length=100)
     GRADE_LEVEL = (
         ('all','All grade level') ,
         ('e' , 'Elementary') ,
@@ -61,4 +61,32 @@ class CreateLesson(forms.Form) :
         ('physic', 'Physic')
     )
     subject = forms.ChoiceField(label="Subject", widget= Select  , choices = SUBJECT)
-    description = forms.CharField(max_length=1000)
+    description = forms.CharField(label="description", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
+
+
+class AddVideoForm(forms.Form):
+    pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
+    url = forms.URLField(label='url')
+    text = forms.CharField(label="text", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
+
+
+class AddDocumentForm(forms.Form):
+    pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
+    #file = models.FileField()
+    text = forms.CharField(label="text", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
+
+
+class AddImageForm(forms.Form):
+    pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
+    #image = models.ImageField()
+    text = forms.CharField(label="text", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
+
+
+class AddStepbyStepForm(forms.Form):
+    pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
+    promt = forms.CharField(label= 'promt', widget= Textarea(attrs={'cols': 65, 'rows': 4, 'style' : 'resize: none;'}), max_length=300)
+
+
+class AddTextForm(forms.Form):
+    pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
+    text = forms.CharField(label="text", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
