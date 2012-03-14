@@ -91,7 +91,7 @@
                 <div class="table">
                     <a href="" class="row active">
                         <img src="/media/images/video.png">
-                         </a>  {{ video.pageTitle }}
+                         </a>  Videos
                 </div>
             </div>
 
@@ -103,12 +103,13 @@
                     <!-- YOUTUBE -->
                     {% if videos %}
                         {% for video in videos %}
+                        <h1>{{ video.pageTitle }}</h1>
                         <object style="height: 400px; width: 650px" width="650" height="400">
                             <param name="movie"
-                                   value="{{ video.url }}">
+                                   value="http://www.youtube.com/v/{{ video.youtube }}?version=2&amp;enablejsapi=1&amp;fs=1&amp;hd=1&amp;playerapiid=ytplayer&amp;rel=0&amp;showsearch=0">
                             <param name="allowFullScreen" value="true">
                             <param name="allowScriptAccess" value="always">
-                            <embed src="{{ video.url }}"
+                            <embed src="http://www.youtube.com/v/{{ video.youtube }}?version=2&amp;autoplay=0&amp;enablejsapi=1&amp;fs=1&amp;hd=1&amp;playerapiid=ytplayer&amp;rel=0&amp;showsearch=0"
                                    type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always"
                                    width="650" height="400">
                         </object>

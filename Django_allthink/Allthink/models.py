@@ -1,3 +1,4 @@
+import re
 from django.contrib.auth.models import  User
 from django.db import models
 from django.db.models.signals import post_save
@@ -37,6 +38,12 @@ class Video(models.Model):
     pageTitle = models.CharField(max_length=100)
     url = models.URLField()
     text = models.TextField(max_length=1000)
+    def youtube(self):
+        regex = re.compile(r"^(http://)?(www\.)?(youtube\.com/watch\?v=)?(?P<id>[A-Za-z0-9\-=_]{11})")
+        match = regex.match(self.url)
+        if not match: return ""
+        video_id = match.group('id')
+        return video_id
 
 
 class Document(models.Model):
