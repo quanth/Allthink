@@ -60,7 +60,7 @@
 
             <div id="links">
                 <a href="/user/{{ username }}/" class="nav">
-                    <img src="/media/images/user_128.gif"> {{ username }} </a>
+                    <img src="/media/images/user_128.gif"> {{ fullname }} </a>
                 <a href="/user/{{ username }}/score" class="nav">
                     0 Points </a>
                 <a href="/logout/" class="nav">
@@ -93,17 +93,82 @@
                         {{ lesson.description }}
                     </div>
                 </div>
+
                 {% if videos %}
                     {% for video in videos %}
                         <div class="row">
                             <a href="/user/{{ username }}/lesson/{{ lesson.id }}/video/{{ video.id }}/edit"
                                class="title">
                                 <img src="/media/images/video.png" alt="Video" class="upic">
-                                {{ video.videoTitle }} </a>
+                                {{ video.pageTitle }} </a>
 
                             <div class="ops">
                                 <a href="/user/{{ username }}/lesson/{{ lesson.id }}/video/{{ video.id }}/" target="_top">View</a> &nbsp;
                                 <a href="/user/{{ username }}/lesson/{{ lesson.id }}/video/{{ video.id }}/delete/">Delete</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if images %}
+                    {% for image in images %}
+                        <div class="row">
+                            <a href="/user/{{ username }}/lesson/{{ lesson.id }}/image/{{ image.id }}/edit"
+                               class="title">
+                                <img src="/media/images/stats.png" alt="image" class="upic">
+                                {{ image.pageTitle }} </a>
+
+                            <div class="ops">
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/image/{{ image.id }}/" target="_top">View</a> &nbsp;
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/image/{{ image.id }}/delete/">Delete</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if docs %}
+                    {% for doc in docs %}
+                        <div class="row">
+                            <a href="/user/{{ username }}/lesson/{{ lesson.id }}/doc/{{ doc.id }}/edit"
+                               class="title">
+                                <img src="/media/images/copy.png" alt="doc" class="upic">
+                                {{ doc.pageTitle }} </a>
+
+                            <div class="ops">
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/doc/{{ doc.id }}/" target="_top">View</a> &nbsp;
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/doc/{{ doc.id }}/delete/">Delete</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if steps %}
+                    {% for step in steps %}
+                        <div class="row">
+                            <a href="/user/{{ username }}/lesson/{{ lesson.id }}/step/{{ step.id }}/edit"
+                               class="title">
+                                <img src="/media/images/notepad.png" alt="step" class="upic">
+                                {{ step.pageTitle }} </a>
+
+                            <div class="ops">
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/step/{{ step.id }}/" target="_top">View</a> &nbsp;
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/step/{{ step.id }}/delete/">Delete</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if texts %}
+                    {% for text in texts %}
+                        <div class="row">
+                            <a href="/user/{{ username }}/lesson/{{ lesson.id }}/text/{{ text.id }}/edit"
+                               class="title">
+                                <img src="/media/images/web.png" alt="text" class="upic">
+                                {{ text.pageTitle }} </a>
+
+                            <div class="ops">
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/text/{{ text.id }}/" target="_top">View</a> &nbsp;
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/text/{{ text.id }}/delete/">Delete</a>
                             </div>
                         </div>
                     {% endfor %}

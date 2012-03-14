@@ -16,14 +16,29 @@ urlpatterns = patterns('',
     (r'^$', main_page),
     (r'^user/(\w+)/$', user_page),
     (r'^user/(\w+)/lesson/create/$', create_lesson),
+    (r'^user/(\w+)/lesson/(\w+)/$', view_lesson),
     (r'^user/(\w+)/lesson/(\w+)/edit/$', edit_lesson),
     (r'^user/(\w+)/lesson/(\w+)/delete/$', delete_lesson),
     (r'^user/(\w+)/lesson/(\w+)/edit-info/$', edit_lesson_info),
+
     (r'^user/(\w+)/lesson/(\w+)/add-video/$', add_video),
     (r'^user/(\w+)/lesson/(\w+)/add-doc/$', add_doc),
     (r'^user/(\w+)/lesson/(\w+)/add-image/$', add_image),
     (r'^user/(\w+)/lesson/(\w+)/add-step/$', add_step),
     (r'^user/(\w+)/lesson/(\w+)/add-text/$', add_text),
+
+    (r'^user/(\w+)/lesson/(\w+)/video/(\w+)/edit/$', edit_video),
+    (r'^user/(\w+)/lesson/(\w+)/doc/(\w+)/edit/$', edit_doc),
+    (r'^user/(\w+)/lesson/(\w+)/image/(\w+)/edit/$', edit_image),
+    (r'^user/(\w+)/lesson/(\w+)/step/(\w+)/edit/$', edit_step),
+    (r'^user/(\w+)/lesson/(\w+)/text/(\w+)/edit/$', edit_text),
+
+
+#    (r'^user/(\w+)/lesson/(\w+)/video/(\w+)/$', view_video),
+#    (r'^user/(\w+)/lesson/(\w+)/doc/(\w+)/$', view_doc),
+#    (r'^user/(\w+)/lesson/(\w+)/image/(\w+)/$', view_image),
+#    (r'^user/(\w+)/lesson/(\w+)/step/(\w+)/$', view_step),
+#    (r'^user/(\w+)/lesson/(\w+)/text/(\w+)/$', view_text),
 
     # Session management
     (r'^login/$', login),
