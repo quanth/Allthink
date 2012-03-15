@@ -75,8 +75,9 @@ def teacher_register_page(request) :
             user_profile = UserProfile.objects.create(
                 user = user,
                 fullname=form.cleaned_data['fullname'],
-                typeUser="teacher",
             )
+            user_profile.typeUser = "teacher"
+            user_profile.save()
             return render_to_response('registration/teacher_signup_success.html', RequestContext(request))
     else:
         form = RegistrationForm()
