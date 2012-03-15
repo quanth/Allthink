@@ -4,7 +4,7 @@ from django.db import models
 from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, related_name='user_profile')
+    user = models.ForeignKey(User, related_name='Allthink_userprofile')
     typeUser = models.CharField(max_length=20)
     fullname = models.CharField(max_length=30)
 
@@ -15,7 +15,7 @@ class UserProfile(models.Model):
 #post_save.connect(create_user_profile, sender=User)
 
 class Lesson(models.Model):
-    user = models.ForeignKey(UserProfile, related_name='lesson')
+    user = models.ForeignKey(UserProfile)
     #
     lessonTitle = models.CharField(max_length=100)
     GRADE_LEVEL = (
@@ -34,7 +34,7 @@ class Lesson(models.Model):
     description = models.TextField(max_length=1000)
 
 class Video(models.Model):
-    lesson = models.ForeignKey(Lesson, related_name='lesson_video')
+    lesson = models.ForeignKey(Lesson)
     pageTitle = models.CharField(max_length=100)
     url = models.URLField()
     text = models.TextField(max_length=1000)
@@ -47,37 +47,37 @@ class Video(models.Model):
 
 
 class Document(models.Model):
-    lesson = models.ForeignKey(Lesson, related_name='lesson_doc')
+    lesson = models.ForeignKey(Lesson)
     file_doc = models.CharField(max_length=10)
     pageTitle = models.CharField(max_length=100)
     text = models.TextField(max_length=1000)
 
 
 class Image(models.Model):
-    lesson = models.ForeignKey(Lesson, related_name='lesson_image')
+    lesson = models.ForeignKey(Lesson)
     pageTitle = models.CharField(max_length=100)
     image = models.CharField(max_length=10)
     text = models.TextField(max_length=1000)
 
 
 class StepbyStep(models.Model):
-    lesson = models.ForeignKey(Lesson, related_name='lesson_step')
+    lesson = models.ForeignKey(Lesson)
     pageTitle = models.CharField(max_length=100)
     promt = models.CharField(max_length=300)
     step = models.CharField(max_length=100)
     explain = models.CharField(max_length=100)
 
 class Text(models.Model):
-    lesson = models.ForeignKey(Lesson, related_name='lesson_text')
+    lesson = models.ForeignKey(Lesson)
     pageTitle = models.CharField(max_length=100)
     text = models.TextField(max_length=1000)
 
 class File_doc(models.Model) :
-    user = models.ForeignKey(UserProfile, related_name='file_doc')
+    user = models.ForeignKey(UserProfile)
     file_name = models.CharField(max_length=255)
     file = models.FileField(upload_to= 'DB/documents')
 
 class File_img(models.Model) :
-    user = models.ForeignKey(UserProfile, related_name='file_img')
+    user = models.ForeignKey(UserProfile)
     file_name = models.CharField(max_length=255)
     file = models.FileField(upload_to= 'DB/images')
