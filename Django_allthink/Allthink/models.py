@@ -48,15 +48,15 @@ class Video(models.Model):
 
 class Document(models.Model):
     lesson = models.ForeignKey(Lesson)
+    file_doc = models.CharField(max_length=10)
     pageTitle = models.CharField(max_length=100)
-    #file = models.FileField()
     text = models.TextField(max_length=1000)
 
 
 class Image(models.Model):
     lesson = models.ForeignKey(Lesson)
     pageTitle = models.CharField(max_length=100)
-    #image = models.ImageField()
+    image = models.CharField(max_length=10)
     text = models.TextField(max_length=1000)
 
 
@@ -64,9 +64,20 @@ class StepbyStep(models.Model):
     lesson = models.ForeignKey(Lesson)
     pageTitle = models.CharField(max_length=100)
     promt = models.CharField(max_length=300)
-
+    step = models.CharField(max_length=100)
+    explain = models.CharField(max_length=100)
 
 class Text(models.Model):
     lesson = models.ForeignKey(Lesson)
     pageTitle = models.CharField(max_length=100)
     text = models.TextField(max_length=1000)
+
+class File_doc(models.Model) :
+    user = models.ForeignKey(UserProfile)
+    file_name = models.CharField(max_length=255)
+    file = models.FileField(upload_to= 'DB/documents')
+
+class File_img(models.Model) :
+    user = models.ForeignKey(UserProfile)
+    file_name = models.CharField(max_length=255)
+    file = models.FileField(upload_to= 'DB/images')

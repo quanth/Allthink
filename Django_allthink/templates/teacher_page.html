@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0040)https://www.engrade.com/app/?app=lessons -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="vi" lang="vi">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Engrade / Allthink Lessons</title>
+    <title>Allthink Lessons</title>
     <meta name="description" content="">
     <link rel="stylesheet" type="text/css" href="/site_media/global.css">
     <script type="text/javascript" src="/site_media/common.js"></script>
@@ -35,7 +34,7 @@
         </ul>
     </div>
     <div id="main" class="clearfix">
-        <h1><a href="/">Apps</a> › Allthink Lessons</h1>
+        <h1>Allthink Lessons</h1>
 
         <div class="tr">
 
@@ -51,9 +50,7 @@
                        target="top"><img src="/media/images/allthinklogo2.png" style="float:left;margin-right:15px"></a>
 
                     <div style="max-width:770px">
-                        Allthink is a new app from Engrade that lets you easily create
-                        mini-lessons for students
-                        featuring videos, images, documents, and a short quiz at the end.
+                        Allthink
                     </div>
                 </div>
 
@@ -66,9 +63,9 @@
                     {% if lessons %}
                         {% for lesson in lessons %}
                             <div class="row">
-                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}"
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/1"
                                    target="_top"><img src="/media/images/page-web.png" class="postpic"></a>
-                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}"
+                                <a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/1"
                                    class="title" target="top">{{ lesson.lessonTitle }}</a>
 
                                 <div class="byline">

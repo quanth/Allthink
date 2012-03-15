@@ -59,8 +59,6 @@
             <div id="links">
                 <a href="/user/{{ username }}/" class="nav">
                     <img src="/media/images/user_128.gif"> {{ fullname }} </a>
-                <a href="/user/{{ username }}/score" class="nav">
-                    0 Points </a>
                 <a href="/logout/" class="nav">
                     Logout </a>
             </div>
@@ -90,7 +88,7 @@
                     <div class="row text ">
                         <div class="name">Video URL</div>
                         <div class="field">{{ form.url }}</div>
-                        <div class="help">Enter the URL of a YouTube video: http://www.youtube.com/watch?v=Si37yjZM-SA
+                        <div class="help">Enter the URL of a YouTube video: http://www.youtube.com/watch?v=t3rhK1ROVoA
                         </div>
                     </div>
 
@@ -99,10 +97,6 @@
                         <div class="field">{{ form.text }}</div>
                         <div class="help">You may add more information or questions below the video.</div>
                     </div>
-
-
-                    <input type="hidden" name="itemid" value="300000000245518">
-
 
                     <input type="hidden" name="pageid" value="">
 

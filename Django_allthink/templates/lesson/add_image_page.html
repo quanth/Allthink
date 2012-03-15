@@ -94,9 +94,7 @@
                     <div class="row select ">
                         <div class="name">Select Image</div>
                         <div class="field">
-                            <select name="fileid">
-                                <option value="" selected="selected">Select existing image...</option>
-                            </select>
+                            {{ form.selectFile }}
                         </div>
                         <div class="help"></div>
                     </div>
@@ -104,8 +102,8 @@
 
                     <div class="row text ">
                         <div class="name">or Upload New</div>
-                        <div class="field"><input type="file" name="file1" value="" size="30"></div>
-                        <div class="help">Upload a jpg, gif, or png image under 8Mb</div>
+                        <div class="field">{{ fileUploadForm.uploadFile }}</div>
+                        <div class="help">Upload a jpg, gif, or png image under 2.5Mb</div>
                     </div>
 
 
@@ -114,10 +112,6 @@
                         <div class="field">{{ form.text }}</div>
                         <div class="help">You may add more information or questions below the image.</div>
                     </div>
-
-
-                    <input type="hidden" name="itemid" value="300000000245518">
-
 
                     <input type="hidden" name="pageid" value="">
 

@@ -72,21 +72,37 @@ class AddVideoForm(forms.Form):
 
 class AddDocumentForm(forms.Form):
     pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
-    #file = models.FileField()
+    FILES = (
+        ('1','File 1') ,
+        ('2','File 2') ,
+        ('3','File 3') ,
+        )
+    selectFile = forms.ChoiceField(label="selectFile", widget= Select  , choices = FILES)
     text = forms.CharField(label="text", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
 
 
 class AddImageForm(forms.Form):
     pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
-    #image = models.ImageField()
+    FILES = (
+        ('1','File 1') ,
+        ('2','File 2') ,
+        ('3','File 3') ,
+        )
+    selectFile = forms.ChoiceField(label="selectFile", widget= Select  , choices = FILES)
     text = forms.CharField(label="text", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
 
 
 class AddStepbyStepForm(forms.Form):
     pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
     promt = forms.CharField(label= 'promt', widget= Textarea(attrs={'cols': 65, 'rows': 4, 'style' : 'resize: none;'}), max_length=300)
-
+    step = forms.CharField(label= 'step1', widget= Textarea(attrs={'cols': 30, 'rows': 1, 'style' : 'resize: none;'}), max_length=100)
+    explain = forms.CharField(label= 'Explaination', widget= Textarea(attrs={'cols': 30, 'rows': 1, 'style' : 'resize: none;'}), max_length=100)
 
 class AddTextForm(forms.Form):
     pageTitle = forms.CharField(label= 'pageTitle', max_length=100)
     text = forms.CharField(label="text", widget= Textarea(attrs={'cols': 70, 'rows': 5, 'style' : 'resize: none;'}), max_length=1000)
+
+class FileUploadForm(forms.Form) :
+    uploadFile = forms.FileField(
+        label = 'uploadFile'
+    )

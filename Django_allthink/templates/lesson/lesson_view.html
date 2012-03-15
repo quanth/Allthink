@@ -1,18 +1,17 @@
 ﻿<!DOCTYPE html>
-<!-- saved from url=(0038)http://www.allthink.com/v/search1212/0 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Search1212</title>
+    <title>{{ lesson.Title }}</title>
 
-    <meta name="description" content="1fdfdfdfdfdf">
+    <meta name="description" content="{{ lesson.description }}">
     <link rel="stylesheet" type="text/css" href="/site_media/allthink.css">
     <script type="text/javascript" src="/site_media/common.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/site_media/lesson.css">
     <script type="text/javascript">
         var PAGE = 0;
-        var ITEMNAME = 'search1212';
+        var ITEMNAME = '{{ lesson.lessonTitle }}';
     </script>
     <style>.tooltiptrolol {
         position: relative;
@@ -65,8 +64,6 @@
             <div id="links">
                 <a href="/user/{{ username }}/" class="nav">
                     <img src="/media/images/user_128.gif"> {{ fullname }} </a>
-                <a href="/user/{{ username }}/score" class="nav">
-                    0 Points </a>
                 <a href="/logout/" class="nav">
                     Logout </a>
             </div>
@@ -83,48 +80,109 @@
                     Lesson</a>
 
 
-                <h1><a href="/user/{{ username }}/lesson/{{ lesson.id }}/">{{ lesson.lessonTitle }}</a></h1>
+                <h1><a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/1">{{ lesson.lessonTitle }}</a></h1>
                 {{ lesson.description }}
             </div>
 
             <div class="sidebar">
                 <div class="table">
-                    <a href="" class="row active">
-                        <img src="/media/images/video.png">
-                         </a>  Videos
+                    <a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/1"
+                       {% if page == '1' %} class="row active" {% else %} class="row " {% endif %}>
+                        <img src="/media/images/video.png"> Videos
+                         </a>
+                </div>
+                <div class="table">
+                    <a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/2"
+                       {% if page == '2' %} class="row active" {% else %} class="row " {% endif %}>
+                        <img src="/media/images/copy.png"> Document
+                    </a>
+                </div>
+                <div class="table">
+                    <a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/3"
+                        {% if page == '3' %} class="row active" {% else %} class="row " {% endif %}>
+                        <img src="/media/images/stats.png">  Images
+                    </a>
+                </div>
+                <div class="table">
+                    <a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/4"
+                        {% if page == '4' %} class="row active" {% else %} class="row " {% endif %}>
+                        <img src="/media/images/notepad.png">  Step by step
+                    </a>
+                </div>
+                <div class="table">
+                    <a href="/user/{{ username }}/lesson/{{ lesson.id }}/view/5"
+                        {% if page == '5' %} class="row active" {% else %} class="row " {% endif %}>
+                        <img src="/media/images/web.png"> Text
+                    </a>
                 </div>
             </div>
 
-            <div class="table main" id="lessonpage1">
+            <div class="table main">
                 <!-- VIDEO -->
-
-                <div class="lessonbody">
-
-                    <!-- YOUTUBE -->
+                {% if page == '1' %}
                     {% if videos %}
                         {% for video in videos %}
-                        <h1>{{ video.pageTitle }}</h1>
-                        <object style="height: 400px; width: 650px" width="650" height="400">
-                            <param name="movie"
-                                   value="http://www.youtube.com/v/{{ video.youtube }}?version=2&amp;enablejsapi=1&amp;fs=1&amp;hd=1&amp;playerapiid=ytplayer&amp;rel=0&amp;showsearch=0">
-                            <param name="allowFullScreen" value="true">
-                            <param name="allowScriptAccess" value="always">
-                            <embed src="http://www.youtube.com/v/{{ video.youtube }}?version=2&amp;autoplay=0&amp;enablejsapi=1&amp;fs=1&amp;hd=1&amp;playerapiid=ytplayer&amp;rel=0&amp;showsearch=0"
-                                   type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always"
-                                   width="650" height="400">
-                        </object>
+                            <div class="lessonbody">
+                                <!-- YOUTUBE -->
+                                <h1>{{ video.pageTitle }}</h1>
+                                <object style="height: 400px; width: 650px" width="650" height="400">
+                                    <param name="movie"
+                                               value="http://www.youtube.com/v/{{ video.youtube }}?version=2&amp;enablejsapi=1&amp;fs=1&amp;hd=1&amp;playerapiid=ytplayer&amp;rel=0&amp;showsearch=0">
+                                    <param name="allowFullScreen" value="true">
+                                    <param name="allowScriptAccess" value="always">
+                                    <embed src="http://www.youtube.com/v/{{ video.youtube }}?version=2&amp;autoplay=0&amp;enablejsapi=1&amp;fs=1&amp;hd=1&amp;playerapiid=ytplayer&amp;rel=0&amp;showsearch=0"
+                                               type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always"
+                                               width="650" height="400">
+                                </object>
+                                <!-- VIMEO -->
+                            </div>
+                            <div class="lessonbody">{{ video.text }}</div>
                         {% endfor %}
                     {% endif %}
+                {% endif %}
+                <!-- DOCUMENT -->
+                {% if page == '2' %}
+                    {% if docs %}
+                        {% for doc in docs %}
+                            <div class="lessonbody">
+                            </div>
+                            <div class="lessonbody">{{ doc.text }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
 
-                    <!-- VIMEO -->
+                <!-- IMAGES -->
+                {% if page == '3' %}
+                    {% if images %}
+                        {% for image in images %}
+                            <div class="lessonbody">
 
+                            </div>
+                            <div class="lessonbody">{{ image.text }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
 
-                </div>
-                <div class="lessonbody">{{ video.text }}</div>
+                <!-- StepByStep -->
+                {% if page == '4' %}
+                    {% if steps %}
+                        {% for step in steps %}
+                            <div class="lessonbody">
 
+                            </div>
+                            <div class="lessonbody">{{ step.text }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+                <!-- Text -->
+                {% if page == '5' %}
+                    {% if texts %}
+                        {% for text in texts %}
+                            <div class="lessonbody">{{ text.text }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
             </div>
-
-
         </div>
 
     </div>
