@@ -44,19 +44,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="32" selection-start="828" selection-end="828" vertical-scroll-proportion="0.8677494">
+            <state line="22" column="32" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Allthink/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="460" column="18" selection-start="16861" selection-end="16861" vertical-scroll-proportion="0.0">
+            <state line="77" column="34" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.6396396">
               <folding />
             </state>
           </provider>
@@ -126,9 +126,9 @@
         <option value="$PROJECT_DIR$/templates/lesson/add_ppdoc_page.html" />
         <option value="$PROJECT_DIR$/templates/lesson/add_image_page.html" />
         <option value="$PROJECT_DIR$/Allthink/forms.py" />
-        <option value="$PROJECT_DIR$/Allthink/views.py" />
         <option value="$PROJECT_DIR$/Allthink/models.py" />
         <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/Allthink/views.py" />
       </list>
     </option>
   </component>
@@ -606,16 +606,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Allthink/views.py">
+    <entry file="file://$PROJECT_DIR$/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="460" column="18" selection-start="16861" selection-end="16861" vertical-scroll-proportion="0.0">
+        <state line="22" column="32" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
+    <entry file="file://$PROJECT_DIR$/Allthink/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="32" selection-start="828" selection-end="828" vertical-scroll-proportion="0.8677494">
+        <state line="77" column="34" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.6396396">
           <folding />
         </state>
       </provider>
