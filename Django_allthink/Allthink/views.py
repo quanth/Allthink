@@ -394,8 +394,8 @@ def edit_image(request, username, id_lesson, id_image) :
             return HttpResponseRedirect('/user/'+username+'/lesson/'+id_lesson+'/edit/')
 
     form = AddImageForm(initial={
-        'pageTitle' : video.pageTitle,
-        'text' : video.text,
+        'pageTitle' : image.pageTitle,
+        'text' : image.text,
         })
     variables = RequestContext(request,{
         'form' : form,
@@ -418,9 +418,10 @@ def edit_step(request, username, id_lesson, id_step) :
             return HttpResponseRedirect('/user/'+username+'/lesson/'+id_lesson+'/edit/')
 
     form = AddStepbyStepForm(initial={
-        'pageTitle' : video.pageTitle,
-        'url' : video.url,
-        'text' : video.text,
+        'pageTitle' : step.pageTitle,
+        'step' : step.step,
+        'explain' : step.explain,
+        'promt' : step.promt,
     })
 
     variables = RequestContext(request,{
@@ -444,8 +445,8 @@ def edit_text(request, username, id_lesson, id_text) :
             return HttpResponseRedirect('/user/'+username+'/lesson/'+id_lesson+'/edit/')
 
     form = AddTextForm(initial={
-        'pageTitle' : video.pageTitle,
-        'text' : video.text,
+        'pageTitle' : text.pageTitle,
+        'text' : text.text,
     })
 
     variables = RequestContext(request,{

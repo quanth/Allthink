@@ -8,11 +8,11 @@ class UserProfile(models.Model):
     typeUser = models.CharField(max_length=20)
     fullname = models.CharField(max_length=30)
 
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-
-post_save.connect(create_user_profile, sender=User)
+#def create_user_profile(sender, instance, created, **kwargs):
+#    if created:
+#        UserProfile.objects.create(user=instance)
+#
+#post_save.connect(create_user_profile, sender=User)
 
 class Lesson(models.Model):
     user = models.ForeignKey(UserProfile)
