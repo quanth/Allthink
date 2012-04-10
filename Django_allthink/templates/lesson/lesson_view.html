@@ -156,7 +156,6 @@
                     {% if images %}
                         {% for image in images %}
                             <div class="lessonbody">
-
                             </div>
                             <div class="lessonbody">{{ image.text }}</div>
                         {% endfor %}
@@ -166,12 +165,25 @@
                 <!-- StepByStep -->
                 {% if page == '4' %}
                     {% if steps %}
-                        {% for step in steps %}
                             <div class="lessonbody">
+                                {% for eachstep in eachsteps %}
+                                    <div class="multi">
+                                        <div class="row text">
+                                            <div class="name">Step</div>
+                                            <div class="field">{{eachstep.step}}</div>
+                                            <div class="help"></div>
+                                        </div>
+                                        <div class="row text">
+                                            <div class="name">Explaination</div>
+                                            <div class="field">{{ eachstep.explain }}</div>
+                                            <div class="help"></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
 
                             </div>
                             <div class="lessonbody">{{ step.text }}</div>
-                        {% endfor %}
+
                     {% endif %}
                 {% endif %}
                 <!-- Text -->
